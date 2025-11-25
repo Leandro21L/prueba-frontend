@@ -1,70 +1,266 @@
-# Getting Started with Create React App
+# 🏦 Sistema de Cajero Automático - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interfaz de usuario desarrollada con **React 18** para el sistema de cajero automático.
 
-## Available Scripts
+## 📋 Requisitos Previos
 
-In the project directory, you can run:
+Antes de comenzar, asegúrate de tener instalado:
 
-### `npm start`
+- **Node.js 16+ o superior** - [Descargar aquí](https://nodejs.org/)
+- **npm 8+** (viene con Node.js)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Verificar instalaciones
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+node -v
+npm -v
+```
 
-### `npm test`
+## 🚀 Instalación
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Crear el proyecto React
 
-### `npm run build`
+```bash
+npx create-react-app atm-frontend
+cd atm-frontend
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Reemplazar el contenido de los archivos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### **public/index.html**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Reemplazar el contenido con:
 
-### `npm run eject`
+```html
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Sistema de Cajero Automático" />
+    <title>Cajero Automático</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <noscript>Necesitas habilitar JavaScript para ejecutar esta app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### **src/index.css**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Reemplazar el contenido con:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
 
-## Learn More
+#### **src/index.js**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
 
-### Code Splitting
+#### **src/App.js**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Copiar todo el código del componente `ATMSystem` que se encuentra en el artifact de este chat.
 
-### Analyzing the Bundle Size
+### 3. Configurar la URL del backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+En el archivo `src/App.js`, verifica que la URL del backend sea correcta:
 
-### Making a Progressive Web App
+```javascript
+const API_URL = 'http://localhost:8080/api';
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Si el backend corre en otro puerto, modifica esta línea.
 
-### Advanced Configuration
+## ▶️ Ejecutar la Aplicación
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+# Instalar dependencias (si aún no se han instalado)
+npm install
 
-### Deployment
+# Iniciar el servidor de desarrollo
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+La aplicación se abrirá automáticamente en: **http://localhost:3000**
 
-### `npm run build` fails to minify
+## 👥 Usuarios de Prueba
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Puedes iniciar sesión con cualquiera de estos usuarios:
+
+| Usuario | Contraseña | Nombre | Saldo Inicial |
+|---------|-----------|---------|---------------|
+| usuario1 | pass123 | Juan Pérez | $5,000,000 |
+| usuario2 | pass456 | María García | $3,000,000 |
+| usuario3 | pass789 | Carlos López | $1,000,000 |
+
+## 🎯 Funcionalidades
+
+### 1. **Login**
+- Ingresa con usuario y contraseña
+- Validación de credenciales contra el backend
+
+### 2. **Retiros**
+- Visualiza tu saldo actual
+- Ingresa el monto a retirar (mín: $1,000 - máx: $2,000,000)
+- El sistema calcula automáticamente la cantidad mínima de billetes
+- Denominaciones: $50,000, $20,000, $10,000, $5,000, $2,000, $1,000
+- Validación de fondos suficientes
+
+### 3. **Reporte**
+- Historial completo de retiros
+- Estadísticas por usuario:
+  - Total de retiros
+  - Máximo retiro exitoso
+  - Promedio de retiros exitosos
+  - Máximo retiro rechazado
+  - Suma total de retiros exitosos
+  - Suma total de retiros rechazados
+  - Promedio de retiros rechazados
+  - Suma total de todos los retiros
+  - Fecha del último retiro exitoso
+
+## 📱 Capturas de Pantalla
+
+### Pantalla de Login
+- Formulario de autenticación
+- Diseño moderno con gradiente azul/morado
+
+### Pantalla de Retiros
+- Visualización del saldo
+- Input para ingresar monto
+- Resultado con desglose de billetes
+
+### Pantalla de Reporte
+- Tabla con estadísticas completas
+- Formato de moneda colombiana (COP)
+
+## 🛠️ Tecnologías Utilizadas
+
+- **React 18**
+- **Tailwind CSS** (vía CDN)
+- **Fetch API** para comunicación con backend
+- **React Hooks** (useState)
+
+## 📦 Estructura del Proyecto
+
+```
+atm-frontend/
+├── public/
+│   └── index.html          ← Tailwind CSS CDN incluido aquí
+├── src/
+│   ├── App.js              ← Componente principal
+│   ├── index.js
+│   └── index.css
+├── package.json
+└── README.md
+```
+
+## ⚙️ Configuración Adicional (Opcional)
+
+### Cambiar el puerto del frontend
+
+Si el puerto 3000 está ocupado, puedes cambiarlo:
+
+**Windows:**
+```bash
+set PORT=3001 && npm start
+```
+
+**Mac/Linux:**
+```bash
+PORT=3001 npm start
+```
+
+### Cambiar la URL del backend
+
+Edita en `src/App.js`:
+
+```javascript
+const API_URL = 'http://localhost:8080/api'; // Cambia el puerto si es necesario
+```
+
+## 🧪 Flujo de Prueba Recomendado
+
+1. **Login** con `usuario1` / `pass123`
+2. **Verificar saldo** - Deberías ver $5,000,000
+3. **Hacer un retiro exitoso** - Por ejemplo: $136,000
+   - Verifica el desglose de billetes
+   - Verifica que el saldo se actualice
+4. **Hacer un retiro rechazado** - Por ejemplo: $10,000,000
+   - Verifica el mensaje de fondos insuficientes
+5. **Ver el reporte** - Click en "Reporte"
+   - Verifica que aparezcan las estadísticas
+   - Verifica los montos en formato de moneda
+
+## 📝 Notas Adicionales
+
+- La aplicación usa el **formato de moneda colombiana** (COP)
+- Los mensajes de error se muestran con iconos emoji
+- El diseño es **responsive** y se adapta a diferentes tamaños de pantalla
+- Los datos se actualizan en **tiempo real** después de cada operación
+- **No se usa LocalStorage** - todos los datos provienen del backend
+
+## 🔄 Comandos Útiles
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar en modo desarrollo
+npm start
+
+# Crear build de producción
+npm run build
+
+# Limpiar caché de npm
+npm cache clean --force
+```
+
+## 📞 Requisitos para Ejecutar
+
+**Antes de iniciar el frontend, asegúrate de:**
+
+1. ✅ El **backend** está corriendo en `http://localhost:8080`
+2. ✅ La **base de datos MySQL** está activa
+3. ✅ Hay **usuarios creados** en la base de datos
+
+**Orden de inicio:**
+1. 🥇 Primero: Iniciar MySQL
+2. 🥈 Segundo: Iniciar Backend (Spring Boot)
+3. 🥉 Tercero: Iniciar Frontend (React)
+
+## 🌐 Acceso
+
+Una vez iniciado, accede a: **http://localhost:3000**
+
+---
